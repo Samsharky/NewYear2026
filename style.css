@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: radial-gradient(circle at bottom, #0b1d3a, #000);
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+/* 煙花畫布 */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* 中央祝賀文字 */
+.greeting {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: gold;
+    font-size: 5rem;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    text-shadow:
+        0 0 10px #ffdd55,
+        0 0 20px #ffaa00,
+        0 0 40px #ff8800;
+    z-index: 10;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ffdd55, 0 0 20px #ffaa00;
+    }
+    to {
+        text-shadow: 0 0 20px #ffff88, 0 0 40px #ffcc00, 0 0 60px #ff8800;
+    }
+}
+
+/* ===== 飛行橫幅 ===== */
+.banner {
+    position: fixed;
+    top: 20%;
+    left: -100%;
+    padding: 1rem 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #ff3366, #ffcc00);
+    border-radius: 50px;
+    box-shadow:
+        0 0 20px rgba(255, 200, 100, 0.8),
+        0 0 40px rgba(255, 100, 100, 0.6);
+    white-space: nowrap;
+    z-index: 20;
+    opacity: 0;
+}
+
+/* 啟動動畫時 */
+.banner.show {
+    animation: flyAcross 8s ease-in-out forwards;
+}
+
+@keyframes flyAcross {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
